@@ -7,6 +7,7 @@ dotenv.config();
 
 import indexRouter from './routes';
 import todoRouter from './routes/todo';
+import subtaskRouter from './routes/subtask';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', indexRouter);
 
 app.use('/api/v1/todo', todoRouter);
+app.use('/api/v1/subtask', subtaskRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
