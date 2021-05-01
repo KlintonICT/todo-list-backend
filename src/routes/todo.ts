@@ -9,4 +9,7 @@ router.post('/', todoController.create);
 /* GET todo list */
 router.get('/', todoController.list);
 
+/* UPDATE todo status */
+router.patch('/', todoController.updateStatus);
+
 export default router;

@@ -10,7 +10,7 @@ const list = async (_req: any, res: any, _next: any) => {
     });
 
     return res.status(200).json({
-      message: 'get todo list successfully',
+      message: 'Get todo list successfully',
       todoList,
     });
   } catch (error) {
