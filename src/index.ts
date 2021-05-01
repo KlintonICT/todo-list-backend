@@ -6,6 +6,7 @@ import express from 'express';
 dotenv.config();
 
 import indexRouter from './routes';
+import todoRouter from './routes/todo';
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
+
+app.use('/api/v1/todo', todoRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
