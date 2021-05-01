@@ -7,6 +7,9 @@ const router = express.Router();
 router.post('/', subtaskController.create);
 
 /* UPDATE subtask status */
-router.patch('/', subtaskController.updateStatus);
+router.patch('/:id', subtaskController.updateStatus);
+
+/* DELETE subtask by id */
+router.delete('/:id', subtaskController.deleteSubtask);
 
 export default router;

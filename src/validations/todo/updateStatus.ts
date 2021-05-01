@@ -1,17 +1,11 @@
 import Joi from 'joi';
 
-interface IObject {
-  id: string;
-  status: string;
-}
-
-const updateStatus = (obj: IObject) => {
+const updateStatus = (status: string) => {
   const schema = Joi.object({
-    id: Joi.string().required(),
     status: Joi.string().max(10).valid('pending', 'completed').required(),
   });
 
-  const { error } = schema.validate(obj);
+  const { error } = schema.validate({ status });
 
   return error?.details ?? false;
 };

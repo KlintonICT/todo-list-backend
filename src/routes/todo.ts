@@ -10,6 +10,9 @@ router.post('/', todoController.create);
 router.get('/', todoController.list);
 
 /* UPDATE todo status */
-router.patch('/', todoController.updateStatus);
+router.patch('/:id', todoController.updateStatus);
+
+/* DELETE todo by id */
+router.delete('/:id', todoController.deleteTodo);
 
 export default router;

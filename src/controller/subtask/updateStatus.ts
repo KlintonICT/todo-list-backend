@@ -1,19 +1,21 @@
 import prisma from '../../utils/prisma';
 import subtaskValidation from '../../validations/subtask';
-
 interface IReq {
   body: {
-    id: string;
     status: string;
+  };
+  params: {
+    id: string;
   };
 }
 
 const create = async (req: IReq, res: any, _next: any) => {
   try {
-    const { id, status } = req.body;
+    const { id } = req.params;
+    const { status } = req.body;
 
     //  validate status
-    const validatedError = subtaskValidation.updateStatus(req.body);
+    const validatedError = subtaskValidation.updateStatus(status);
     if (validatedError) {
       return res.status(422).json({
         message: 'Invalid status',
