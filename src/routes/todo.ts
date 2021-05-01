@@ -6,4 +6,7 @@ const router = express.Router();
 /* CREATE new todo */
 router.post('/', todoController.create);
 
+/* GET todo list */
+router.get('/', todoController.list);
+
 export default router;
