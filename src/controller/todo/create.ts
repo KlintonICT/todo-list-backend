@@ -27,6 +27,9 @@ const create = async (req: IReq, res: any, _next: any) => {
         id: uuidV4(),
         title,
       },
+      include: {
+        subtasks: true,
+      },
     });
 
     return res.status(200).json({

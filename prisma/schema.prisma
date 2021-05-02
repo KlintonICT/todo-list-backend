@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("PSQL_URL")
+  url      = env("PSQL_URI")
 }
 
 model Subtask {

@@ -10,5 +10,5 @@ interface ISubtask extends ITask {
 }
 
 interface ITodo extends ITask {
-  subtasks: ISubtask;
+  subtasks: ISubtask[];
 }

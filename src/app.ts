@@ -26,9 +26,4 @@ app.use('/', indexRouter);
 app.use('/api/v1/todo', todoRouter);
 app.use('/api/v1/subtask', subtaskRouter);
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT || 4000}`);
-});
-
-module.exports = app;
+export default app;
