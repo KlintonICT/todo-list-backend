@@ -5,6 +5,7 @@ import app from '../src/app';
 import prisma from '../src/utils/prisma';
 
 const TODO_END_POINT = '/api/v1/todo';
+let todo_id = '';
 
 describe('POST /todo', () => {
   test('should return Created todo successfully', (done) => {
@@ -14,6 +15,7 @@ describe('POST /todo', () => {
       .expect(200)
       .then((response) => {
         assert(response.body.message === 'Created todo successfully');
+        todo_id = response.body.todo.id;
         done();
       })
       .catch((err) => done(err));
@@ -35,15 +37,9 @@ describe('GET /todo', () => {
 });
 
 describe('PATCH /todo', () => {
-  let todoId = '';
-  beforeEach(async () => {
-    const response = await request(app).post(TODO_END_POINT).send({ title: 'my completed test' });
-    todoId = response.body.todo.id;
-  });
-
   test('should return Updated todo successfully', (done) => {
     request(app)
-      .patch(`${TODO_END_POINT}/${todoId}`)
+      .patch(`${TODO_END_POINT}/${todo_id}`)
       .send({ status: 'completed' })
       .expect(200)
       .then((response) => {
@@ -56,15 +52,9 @@ describe('PATCH /todo', () => {
 });
 
 describe('DELETE /todo', () => {
-  let todoId = '';
-  beforeEach(async () => {
-    const response = await request(app).post(TODO_END_POINT).send({ title: 'my deleted test' });
-    todoId = response.body.todo.id;
-  });
-
   test('should return Deleted todo successfully', (done) => {
     request(app)
-      .delete(`${TODO_END_POINT}/${todoId}`)
+      .delete(`${TODO_END_POINT}/${todo_id}`)
       .send({ status: 'completed' })
       .expect(200)
       .then((response) => {
