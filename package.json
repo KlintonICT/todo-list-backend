@@ -12,7 +12,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon dist/server.js",
     "watch": "tsc -w",
-    "postinstall": "tsc",
+    "build": "tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
